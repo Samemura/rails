@@ -498,6 +498,13 @@ module Rails
       ordered_railties.flatten - [self]
     end
 
+    initializer :let_zeitwerk_take_over, after: :set_autoload_paths do |app|
+      if config.autoloader == :zeitwerk
+        require "active_support/dependencies/zeitwerk_integration"
+        ActiveSupport::Dependencies::ZeitwerkIntegration.take_over
+      end
+    end
+
   protected
 
     alias :build_middleware_stack :app
