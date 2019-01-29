@@ -56,12 +56,20 @@ class Date
     in_time_zone.since(-seconds)
   end
 
+  def before(duration)
+    ago(duration.to_i)
+  end
+
   # Converts Date to a Time (or DateTime if necessary) with the time portion set to the beginning of the day (0:00)
   # and then adds the specified number of seconds
   def since(seconds)
     in_time_zone.since(seconds)
   end
   alias :in :since
+
+  def after(duration)
+    since(duration.to_i)
+  end
 
   # Converts Date to a Time (or DateTime if necessary) with the time portion set to the beginning of the day (0:00)
   def beginning_of_day

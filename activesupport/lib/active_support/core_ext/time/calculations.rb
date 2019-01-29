@@ -189,6 +189,7 @@ class Time
   def ago(seconds)
     since(-seconds)
   end
+  alias :before :ago
 
   # Returns a new Time representing the time a number of seconds since the instance time
   def since(seconds)
@@ -197,6 +198,7 @@ class Time
     to_datetime.since(seconds)
   end
   alias :in :since
+  alias :after :since
 
   # Returns a new Time representing the start of the day (0:00)
   def beginning_of_day

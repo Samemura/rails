@@ -988,4 +988,16 @@ class TimeExtMarshalingTest < ActiveSupport::TestCase
   def test_last_quarter_on_31st
     assert_equal Time.local(2004, 2, 29), Time.local(2004, 5, 31).last_quarter
   end
+
+  def test_before
+    assert_equal Time.local(2018, 3, 5, 12, 0, 0), Time.local(2018, 3, 6, 12, 0, 0).before(1.day)
+    assert_equal Time.local(2018, 3, 5, 12, 0, 0), Time.local(2018, 4, 6, 12, 0, 0).before(32.day)
+    assert_equal Time.local(2018, 4, 7, 12, 0, 0), Time.local(2018, 4, 6, 12, 0, 0).before(-1.day)
+  end
+
+  def test_after
+    assert_equal Time.local(2018, 3, 6, 12, 0, 0), Time.local(2018, 3, 5, 12, 0, 0).after(1.day)
+    assert_equal Time.local(2018, 4, 6, 12, 0, 0), Time.local(2018, 3, 5, 12, 0, 0).after(32.day)
+    assert_equal Time.local(2018, 4, 6, 12, 0, 0), Time.local(2018, 4, 7, 12, 0, 0).after(-1.day)
+  end
 end

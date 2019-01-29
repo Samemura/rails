@@ -382,6 +382,12 @@ class DateExtCalculationsTest < ActiveSupport::TestCase
     Date.new(2005, 2, 28).advance(options)
     assert_equal({ years: 3, months: 11, days: 2 }, options)
   end
+
+  def test_before
+    assert_equal Time.local(2018, 3, 5, 0, 0, 0), Date.new(2018, 3, 6).before(1.day)
+    assert_equal Time.local(2018, 3, 5, 0, 0, 0), Date.new(2018, 4, 6).before(32.day)
+    assert_equal Time.local(2018, 4, 7, 0, 0, 0), Date.new(2018, 4, 6).before(-1.day)
+  end
 end
 
 class DateExtBehaviorTest < ActiveSupport::TestCase

@@ -106,6 +106,10 @@ class DateTime
     since(-seconds)
   end
 
+  def before(duration)
+    ago(duration.to_i)
+  end
+
   # Returns a new DateTime representing the time a number of seconds since the
   # instance time. Do not use this method in combination with x.months, use
   # months_since instead!
@@ -113,6 +117,10 @@ class DateTime
     self + Rational(seconds, 86400)
   end
   alias :in :since
+
+  def after(duration)
+    since(duration.to_i)
+  end
 
   # Returns a new DateTime representing the start of the day (0:00).
   def beginning_of_day

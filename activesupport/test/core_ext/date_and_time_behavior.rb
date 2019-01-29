@@ -385,13 +385,13 @@ module DateAndTimeBehavior
     assert_predicate date_time_init(2015, 1, 5, 15, 15, 10), :on_weekday?
   end
 
-  def test_before
+  def test_before_comparison
     assert_equal false, date_time_init(2017, 3, 6, 12, 0, 0).before?(date_time_init(2017, 3, 5, 12, 0, 0))
     assert_equal false, date_time_init(2017, 3, 6, 12, 0, 0).before?(date_time_init(2017, 3, 6, 12, 0, 0))
     assert_equal true, date_time_init(2017, 3, 6, 12, 0, 0).before?(date_time_init(2017, 3, 7, 12, 0, 0))
   end
 
-  def test_after
+  def test_after_comparison
     assert_equal true, date_time_init(2017, 3, 6, 12, 0, 0).after?(date_time_init(2017, 3, 5, 12, 0, 0))
     assert_equal false, date_time_init(2017, 3, 6, 12, 0, 0).after?(date_time_init(2017, 3, 6, 12, 0, 0))
     assert_equal false, date_time_init(2017, 3, 6, 12, 0, 0).after?(date_time_init(2017, 3, 7, 12, 0, 0))
